@@ -29,6 +29,10 @@ for (i in 1:nrow(loompres_fish)) {
   
   duration <- "00:00:15"
   output <- paste0(loompres_fish$video_file[i],"loom_", loompres_fish$loom_no[i], ".mp4")
+
+  timestamp <- paste0("00:", loompres_fish$time[i]) # minus 5 sec 
+  duration <- "00:00:15"
+  output <- paste0("loom_", loompres_fish$loom_no[i], ".mp4")
   
   cut_code <- paste("$ ffmpeg -i", input, " -ss ", timestamp, " -t ", duration, " -c:v copy -c:a copy ", output)
   full_code[i] <- cut_code
